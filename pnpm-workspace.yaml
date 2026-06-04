@@ -1,8 +1,9 @@
 allowBuilds:
-  '@parcel/watcher': set this to true or false
-  core-js: set this to true or false
-  core-js-pure: set this to true or false
-  unrs-resolver: set this to true or false
+  '@parcel/watcher': true
+  core-js: true
+  core-js-pure: true
+  unrs-resolver: true
+
 minimumReleaseAgeExclude:
   - '@wordpress/babel-preset-default@8.48.0'
   - '@wordpress/base-styles@9.1.0'
