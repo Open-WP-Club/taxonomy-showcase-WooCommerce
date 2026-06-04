@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "woo-taxonomy-blocks/taxonomy-showcase",
+  "version": "1.0.0",
+  "title": "Taxonomy Showcase",
+  "category": "woocommerce",
+  "icon": "cover-image",
+  "description": "Hero-style showcase for WooCommerce taxonomy terms — ideal for brands and collections.",
+  "keywords": [ "taxonomy", "brands", "showcase", "hero", "woocommerce" ],
+  "supports": {
+    "html": false,
+    "align": [ "wide", "full" ],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "attributes": {
+    "taxonomy":          { "type": "string",  "default": "product_cat" },
+    "termIds":           { "type": "array",   "default": [], "items": { "type": "integer" } },
+    "limit":             { "type": "integer", "default": 3 },
+    "orderby":           { "type": "string",  "default": "count" },
+    "order":             { "type": "string",  "default": "DESC" },
+    "hideEmpty":         { "type": "boolean", "default": true },
+    "imageSize":         { "type": "string",  "default": "large" },
+    "minHeight":         { "type": "integer", "default": 400 },
+    "borderRadius":      { "type": "integer", "default": 12 },
+    "overlayColor":      { "type": "string",  "default": "#000000" },
+    "overlayOpacity":    { "type": "integer", "default": 40 },
+    "textColor":         { "type": "string",  "default": "#ffffff" },
+    "showCount":         { "type": "boolean", "default": true },
+    "showDescription":   { "type": "boolean", "default": true },
+    "buttonText":        { "type": "string",  "default": "Shop Now" },
+    "buttonStyle":       { "type": "string",  "default": "outline" },
+    "showProducts":      { "type": "boolean", "default": false },
+    "productsPerTerm":   { "type": "integer", "default": 4 },
+    "placeholderImageId":{ "type": "integer", "default": 0 },
+    "placeholderColor":  { "type": "string",  "default": "#cccccc" }
+  },
+  "textdomain": "woo-taxonomy-blocks",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

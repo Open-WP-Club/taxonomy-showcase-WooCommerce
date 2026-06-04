@@ -1,0 +1,97 @@
+.wp-block-woo-taxonomy-blocks-taxonomy-grid {
+	--wtb-columns: 3;
+	--wtb-aspect-ratio: 4/3;
+	--wtb-border-radius: 8px;
+	--wtb-gap: 1.5rem;
+	--wtb-placeholder-color: #f0f0f0;
+
+	display: grid;
+	grid-template-columns: repeat(var(--wtb-columns), 1fr);
+	gap: var(--wtb-gap);
+
+	.wtb-card {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		border-radius: var(--wtb-border-radius);
+		overflow: hidden;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&__image-wrap {
+			aspect-ratio: var(--wtb-aspect-ratio);
+			overflow: hidden;
+			background-color: var(--wtb-placeholder-color);
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.3s ease;
+			}
+		}
+
+		&__placeholder {
+			width: 100%;
+			height: 100%;
+			background-color: var(--wtb-placeholder-color);
+		}
+
+		&__body {
+			padding: 1rem;
+		}
+
+		&__name {
+			display: block;
+			font-weight: 600;
+			font-size: 1rem;
+			line-height: 1.3;
+		}
+
+		&__count {
+			display: block;
+			font-size: 0.875rem;
+			color: #666;
+			margin-top: 0.25rem;
+		}
+
+		&__description {
+			font-size: 0.875rem;
+			color: #555;
+			margin-top: 0.5rem;
+			margin-bottom: 0;
+		}
+	}
+
+	// Shadow modifier
+	&.wtb-has-shadow .wtb-card {
+		box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+
+		&:hover {
+			box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+		}
+	}
+
+	// Hover effects
+	&.wtb-hover-lift .wtb-card:hover {
+		transform: translateY(-4px);
+	}
+
+	&.wtb-hover-zoom .wtb-card:hover .wtb-card__image-wrap img {
+		transform: scale(1.06);
+	}
+
+	&.wtb-hover-glow .wtb-card:hover {
+		outline: 3px solid currentColor;
+		outline-offset: 2px;
+	}
+
+	// Responsive
+	@media (max-width: 782px) {
+		--wtb-columns: 2;
+	}
+
+	@media (max-width: 480px) {
+		--wtb-columns: 1;
+	}
+}

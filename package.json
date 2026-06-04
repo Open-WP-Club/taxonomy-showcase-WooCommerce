@@ -1,0 +1,13 @@
+{
+  "name": "taxonomy-showcase-woocommerce",
+  "version": "1.0.0",
+  "description": "WooCommerce Taxonomy Blocks for Gutenberg",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0"
+  }
+}
