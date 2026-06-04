@@ -1,1 +1,31 @@
-/node_modules
+# Dependencies
+node_modules/
+
+# Build output (compiled by CI — not committed)
+build/
+
+# pnpm
+.pnpm-store/
+.pnpm-debug.log
+
+# npm / misc logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# WordPress
+*.log
+error_log
+
+# Zip artifacts (built by GitHub Actions)
+*.zip
