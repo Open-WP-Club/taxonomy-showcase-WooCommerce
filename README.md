@@ -1,0 +1,1 @@
+# taxonomy-showcase-WooCommerce
