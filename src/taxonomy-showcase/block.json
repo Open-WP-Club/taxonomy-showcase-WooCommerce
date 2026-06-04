@@ -33,7 +33,8 @@
     "showProducts":      { "type": "boolean", "default": false },
     "productsPerTerm":   { "type": "integer", "default": 4 },
     "placeholderImageId":{ "type": "integer", "default": 0 },
-    "placeholderColor":  { "type": "string",  "default": "#cccccc" }
+    "placeholderColor":  { "type": "string",  "default": "#cccccc" },
+    "excludeTermIds":    { "type": "array",   "default": [], "items": { "type": "integer" } }
   },
   "textdomain": "woo-taxonomy-blocks",
   "editorScript": "file:./index.js",

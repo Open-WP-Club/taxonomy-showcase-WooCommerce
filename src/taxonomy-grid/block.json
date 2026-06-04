@@ -33,7 +33,8 @@
     "placeholderColor":     { "type": "string",  "default": "#f0f0f0" },
     "showAlphabetFilter":   { "type": "boolean", "default": false },
     "showSearch":           { "type": "boolean", "default": false },
-    "searchPlaceholder":    { "type": "string",  "default": "" }
+    "searchPlaceholder":    { "type": "string",  "default": "" },
+    "excludeTermIds":       { "type": "array",   "default": [], "items": { "type": "integer" } }
   },
   "textdomain": "woo-taxonomy-blocks",
   "editorScript": "file:./index.js",

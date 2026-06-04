@@ -28,6 +28,7 @@ $placeholder_color = $attributes['placeholderColor']  ?? '#f0f0f0';
 $show_alphabet     = (bool) ( $attributes['showAlphabetFilter'] ?? false );
 $show_search       = (bool) ( $attributes['showSearch']         ?? false );
 $search_placeholder = $attributes['searchPlaceholder'] ?? '';
+$exclude_term_ids  = array_map( 'absint', $attributes['excludeTermIds'] ?? [] );
 
 if ( ! taxonomy_exists( $taxonomy ) ) {
 	return '';
@@ -43,6 +44,10 @@ $query_args = [
 
 if ( ! empty( $term_ids ) ) {
 	$query_args['include'] = array_map( 'absint', $term_ids );
+}
+
+if ( ! empty( $exclude_term_ids ) ) {
+	$query_args['exclude'] = $exclude_term_ids;
 }
 
 // Alphabet mode needs alphabetical order to make sense.

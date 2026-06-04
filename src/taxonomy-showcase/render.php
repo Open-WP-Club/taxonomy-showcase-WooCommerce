@@ -29,6 +29,7 @@ $show_products     = (bool) ( $attributes['showProducts']     ?? false );
 $products_per_term = max( 1, (int) ( $attributes['productsPerTerm'] ?? 4 ) );
 $placeholder_id    = (int) ( $attributes['placeholderImageId'] ?? 0 );
 $placeholder_color = $attributes['placeholderColor'] ?? '#cccccc';
+$exclude_term_ids  = array_map( 'absint', $attributes['excludeTermIds'] ?? [] );
 
 if ( ! taxonomy_exists( $taxonomy ) ) {
 	return '';
@@ -44,6 +45,10 @@ $query_args = [
 
 if ( ! empty( $term_ids ) ) {
 	$query_args['include'] = array_map( 'absint', $term_ids );
+}
+
+if ( ! empty( $exclude_term_ids ) ) {
+	$query_args['exclude'] = $exclude_term_ids;
 }
 
 /** Filters the WP_Term_Query args for the Taxonomy Showcase block. */

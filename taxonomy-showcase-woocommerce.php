@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WooCommerce Taxonomy Blocks
  * Description:       Gutenberg blocks for displaying WooCommerce taxonomy terms as Grid and Showcase layouts.
- * Version:           1.0.0
+ * Version:           1.2.2
  * Author:            OpenWpClub
  * Author URI:        https://openwpclub.com
  * License:           GPL-2.0-or-later
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WTB_VERSION', '1.0.0' );
+define( 'WTB_VERSION', '1.2.2' );
 define( 'WTB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WTB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

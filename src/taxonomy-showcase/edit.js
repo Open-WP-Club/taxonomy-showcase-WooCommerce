@@ -54,6 +54,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		productsPerTerm,
 		placeholderImageId,
 		placeholderColor,
+		excludeTermIds,
 	} = attributes;
 
 	const placeholderImageUrl = useSelect(
@@ -110,6 +111,19 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Hide empty terms', 'woo-taxonomy-blocks' ) }
 						checked={ hideEmpty }
 						onChange={ ( val ) => setAttributes( { hideEmpty: val } ) }
+					/>
+					<TextControl
+						label={ __( 'Exclude term IDs', 'woo-taxonomy-blocks' ) }
+						help={ __( 'Comma-separated term IDs to exclude.', 'woo-taxonomy-blocks' ) }
+						value={ excludeTermIds.join( ', ' ) }
+						onChange={ ( val ) =>
+							setAttributes( {
+								excludeTermIds: val
+									.split( ',' )
+									.map( ( s ) => parseInt( s.trim(), 10 ) )
+									.filter( ( n ) => Number.isFinite( n ) && n > 0 ),
+							} )
+						}
 					/>
 					<ToggleControl
 						label={ __( 'Show product count', 'woo-taxonomy-blocks' ) }
