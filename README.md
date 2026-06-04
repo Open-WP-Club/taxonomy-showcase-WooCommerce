@@ -83,3 +83,20 @@ Both blocks expose CSS custom properties on the wrapper element, making it easy 
     --wtb-min-height: 400px;
 }
 ```
+
+## Development
+
+```bash
+pnpm install
+pnpm start    # watch mode
+pnpm build    # production build
+```
+
+### Releasing
+
+Push a version tag — GitHub Actions builds the plugin and attaches a ready-to-install ZIP to the release automatically:
+
+```bash
+git tag 1.2.0
+git push origin 1.2.0
+```
