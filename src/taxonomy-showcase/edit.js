@@ -74,6 +74,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						<Spinner />
 					) : (
 						<SelectControl
+							__next40pxDefaultSize
 							label={ __( 'Taxonomy', 'woo-taxonomy-blocks' ) }
 							value={ taxonomy }
 							options={ taxonomyOptions }
@@ -81,6 +82,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						/>
 					) }
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Number of terms', 'woo-taxonomy-blocks' ) }
 						value={ limit }
 						min={ 1 }
@@ -88,6 +90,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( val ) => setAttributes( { limit: val } ) }
 					/>
 					<SelectControl
+						__next40pxDefaultSize
 						label={ __( 'Order by', 'woo-taxonomy-blocks' ) }
 						value={ orderby }
 						options={ [
@@ -99,6 +102,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( val ) => setAttributes( { orderby: val } ) }
 					/>
 					<SelectControl
+						__next40pxDefaultSize
 						label={ __( 'Order', 'woo-taxonomy-blocks' ) }
 						value={ order }
 						options={ [
@@ -113,6 +117,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( val ) => setAttributes( { hideEmpty: val } ) }
 					/>
 					<TextControl
+						__next40pxDefaultSize
 						label={ __( 'Exclude term IDs', 'woo-taxonomy-blocks' ) }
 						help={ __( 'Comma-separated term IDs to exclude.', 'woo-taxonomy-blocks' ) }
 						value={ excludeTermIds.join( ', ' ) }
@@ -140,6 +145,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				{ /* ── Layout ── */ }
 				<PanelBody title={ __( 'Layout', 'woo-taxonomy-blocks' ) } initialOpen={ false }>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Minimum height (px)', 'woo-taxonomy-blocks' ) }
 						value={ minHeight }
 						min={ 200 }
@@ -148,6 +154,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( val ) => setAttributes( { minHeight: val } ) }
 					/>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Border radius (px)', 'woo-taxonomy-blocks' ) }
 						value={ borderRadius }
 						min={ 0 }
@@ -155,6 +162,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( val ) => setAttributes( { borderRadius: val } ) }
 					/>
 					<SelectControl
+						__next40pxDefaultSize
 						label={ __( 'Image size', 'woo-taxonomy-blocks' ) }
 						value={ imageSize }
 						options={ [
@@ -184,6 +192,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					] }
 				>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Overlay opacity (%)', 'woo-taxonomy-blocks' ) }
 						value={ overlayOpacity }
 						min={ 0 }
@@ -195,11 +204,13 @@ export default function Edit( { attributes, setAttributes } ) {
 				{ /* ── Button ── */ }
 				<PanelBody title={ __( 'Button', 'woo-taxonomy-blocks' ) } initialOpen={ false }>
 					<TextControl
+						__next40pxDefaultSize
 						label={ __( 'Button text', 'woo-taxonomy-blocks' ) }
 						value={ buttonText }
 						onChange={ ( val ) => setAttributes( { buttonText: val } ) }
 					/>
 					<SelectControl
+						__next40pxDefaultSize
 						label={ __( 'Button style', 'woo-taxonomy-blocks' ) }
 						value={ buttonStyle }
 						options={ [
@@ -221,6 +232,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 					{ showProducts && (
 						<RangeControl
+							__next40pxDefaultSize
 							label={ __( 'Products per term', 'woo-taxonomy-blocks' ) }
 							value={ productsPerTerm }
 							min={ 2 }
