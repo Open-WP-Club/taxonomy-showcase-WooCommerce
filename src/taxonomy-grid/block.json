@@ -29,11 +29,13 @@
     "cardBorderRadius":  { "type": "integer", "default": 8 },
     "cardShadow":        { "type": "boolean", "default": true },
     "hoverEffect":       { "type": "string",  "default": "lift" },
-    "placeholderImageId":{ "type": "integer", "default": 0 },
-    "placeholderColor":  { "type": "string",  "default": "#f0f0f0" }
+    "placeholderImageId":   { "type": "integer", "default": 0 },
+    "placeholderColor":     { "type": "string",  "default": "#f0f0f0" },
+    "showAlphabetFilter":   { "type": "boolean", "default": false }
   },
   "textdomain": "woo-taxonomy-blocks",
   "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
   "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

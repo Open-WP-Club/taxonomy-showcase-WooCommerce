@@ -3,7 +3,7 @@ name: Build & Release Plugin
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - '*.*.*'
 
 permissions:
   contents: write
@@ -30,7 +30,7 @@ jobs:
         run: |
           SLUG="taxonomy-showcase-woocommerce"
           VERSION="${{ github.ref_name }}"
-          VERSION_CLEAN="${VERSION#v}"
+          VERSION_CLEAN="${VERSION}"
           ZIP="${SLUG}-${VERSION}.zip"
 
           # Copy only production files

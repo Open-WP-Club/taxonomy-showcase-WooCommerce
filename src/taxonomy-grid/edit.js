@@ -49,6 +49,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		hoverEffect,
 		placeholderImageId,
 		placeholderColor,
+		showAlphabetFilter,
 	} = attributes;
 
 	const placeholderImageUrl = useSelect(
@@ -110,6 +111,12 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				{ /* ── Layout ── */ }
 				<PanelBody title={ __( 'Layout', 'woo-taxonomy-blocks' ) } initialOpen={ false }>
+					<ToggleControl
+						label={ __( 'Alphabet index', 'woo-taxonomy-blocks' ) }
+						help={ __( 'Group terms A–Z with a sticky navigation. Works best with Order by: Name.', 'woo-taxonomy-blocks' ) }
+						checked={ showAlphabetFilter }
+						onChange={ ( val ) => setAttributes( { showAlphabetFilter: val } ) }
+					/>
 					<RangeControl
 						label={ __( 'Columns', 'woo-taxonomy-blocks' ) }
 						value={ columns }
