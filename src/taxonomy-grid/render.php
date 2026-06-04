@@ -26,6 +26,8 @@ $hover_effect      = $attributes['hoverEffect']       ?? 'lift';
 $placeholder_id    = (int) ( $attributes['placeholderImageId'] ?? 0 );
 $placeholder_color = $attributes['placeholderColor']  ?? '#f0f0f0';
 $show_alphabet     = (bool) ( $attributes['showAlphabetFilter'] ?? false );
+$show_search       = (bool) ( $attributes['showSearch']         ?? false );
+$search_placeholder = $attributes['searchPlaceholder'] ?? '';
 
 if ( ! taxonomy_exists( $taxonomy ) ) {
 	return '';
@@ -75,7 +77,10 @@ $classes = implode( ' ', array_filter( [
 	$show_alphabet   ? 'wtb-has-alphabet' : '',
 ] ) );
 
-$extra_attrs = $show_alphabet ? 'data-alpha="1"' : '';
+$extra_parts = [];
+if ( $show_alphabet ) $extra_parts[] = 'data-alpha="1"';
+if ( $show_search )   $extra_parts[] = 'data-search="1"';
+$extra_attrs = implode( ' ', $extra_parts );
 
 $wrapper_attrs = get_block_wrapper_attributes( [
 	'class' => $classes,
@@ -135,6 +140,15 @@ ob_start();
 echo '<div ' . $wrapper_attrs;
 if ( $extra_attrs ) echo ' ' . $extra_attrs;
 echo '>';
+
+if ( $show_search ) {
+	$placeholder = $search_placeholder ?: __( 'Search…', 'woo-taxonomy-blocks' );
+	printf(
+		'<div class="wtb-search"><input class="wtb-search__input" type="search" placeholder="%s" aria-label="%s" /></div>',
+		esc_attr( $placeholder ),
+		esc_attr__( 'Filter terms', 'woo-taxonomy-blocks' )
+	);
+}
 
 if ( $show_alphabet ) {
 

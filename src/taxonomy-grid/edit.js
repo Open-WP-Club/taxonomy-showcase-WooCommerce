@@ -11,6 +11,7 @@ import {
 	SelectControl,
 	RangeControl,
 	ToggleControl,
+	TextControl,
 	Button,
 	Spinner,
 } from '@wordpress/components';
@@ -50,6 +51,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		placeholderImageId,
 		placeholderColor,
 		showAlphabetFilter,
+		showSearch,
+		searchPlaceholder,
 	} = attributes;
 
 	const placeholderImageUrl = useSelect(
@@ -111,6 +114,20 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				{ /* ── Layout ── */ }
 				<PanelBody title={ __( 'Layout', 'woo-taxonomy-blocks' ) } initialOpen={ false }>
+					<ToggleControl
+						label={ __( 'Live search', 'woo-taxonomy-blocks' ) }
+						help={ __( 'Show a search input that filters terms as you type.', 'woo-taxonomy-blocks' ) }
+						checked={ showSearch }
+						onChange={ ( val ) => setAttributes( { showSearch: val } ) }
+					/>
+					{ showSearch && (
+						<TextControl
+							label={ __( 'Search placeholder text', 'woo-taxonomy-blocks' ) }
+							value={ searchPlaceholder }
+							placeholder={ __( 'Search…', 'woo-taxonomy-blocks' ) }
+							onChange={ ( val ) => setAttributes( { searchPlaceholder: val } ) }
+						/>
+					) }
 					<ToggleControl
 						label={ __( 'Alphabet index', 'woo-taxonomy-blocks' ) }
 						help={ __( 'Group terms A–Z with a sticky navigation. Works best with Order by: Name.', 'woo-taxonomy-blocks' ) }

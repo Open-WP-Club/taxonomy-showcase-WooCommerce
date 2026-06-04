@@ -31,7 +31,9 @@
     "hoverEffect":       { "type": "string",  "default": "lift" },
     "placeholderImageId":   { "type": "integer", "default": 0 },
     "placeholderColor":     { "type": "string",  "default": "#f0f0f0" },
-    "showAlphabetFilter":   { "type": "boolean", "default": false }
+    "showAlphabetFilter":   { "type": "boolean", "default": false },
+    "showSearch":           { "type": "boolean", "default": false },
+    "searchPlaceholder":    { "type": "string",  "default": "" }
   },
   "textdomain": "woo-taxonomy-blocks",
   "editorScript": "file:./index.js",

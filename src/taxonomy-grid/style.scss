@@ -101,6 +101,34 @@
 	}
 }
 
+// ── Live search ───────────────────────────────────────────────────────────────
+
+.wtb-search {
+	margin-bottom: 1.25rem;
+
+	&__input {
+		width: 100%;
+		padding: 0.625rem 1rem;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		font-size: 0.9375rem;
+		line-height: 1.5;
+		background: #fff;
+		transition: border-color 0.15s ease, box-shadow 0.15s ease;
+		box-sizing: border-box;
+
+		&:focus {
+			outline: none;
+			border-color: currentColor;
+			box-shadow: 0 0 0 2px rgb(0 0 0 / 12%);
+		}
+
+		&::-webkit-search-cancel-button {
+			cursor: pointer;
+		}
+	}
+}
+
 // ── Alphabet nav ──────────────────────────────────────────────────────────────
 
 .wtb-alpha-nav {
