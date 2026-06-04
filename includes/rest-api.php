@@ -15,6 +15,9 @@ add_action( 'rest_api_init', function () {
 function wtb_rest_get_taxonomies(): array {
 	$result = [];
 	foreach ( get_object_taxonomies( 'product', 'objects' ) as $taxonomy ) {
+		if ( ! $taxonomy->publicly_queryable ) {
+			continue;
+		}
 		$result[] = [
 			'value' => $taxonomy->name,
 			'label' => $taxonomy->label,
