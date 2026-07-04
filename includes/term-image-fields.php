@@ -9,6 +9,8 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'admin_enqueue_scripts', function ( string $hook ) {
 	if ( ! in_array( $hook, [ 'edit-tags.php', 'term.php' ], true ) ) return;
+	$screen = get_current_screen();
+	if ( ! $screen || ! in_array( $screen->taxonomy, wtb_get_image_field_taxonomies(), true ) ) return;
 	wp_enqueue_media();
 	wp_enqueue_script(
 		'wtb-term-image-admin',

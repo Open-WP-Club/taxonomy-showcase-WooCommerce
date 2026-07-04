@@ -29,3 +29,4 @@ error_log
 
 # Zip artifacts (built by GitHub Actions)
 *.zip
+/vendor

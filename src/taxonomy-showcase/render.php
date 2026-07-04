@@ -160,7 +160,7 @@ ob_start();
 
 				if ( $products ) :
 			?>
-				<div class="wtb-showcase-products" style="--wtb-product-columns:<?php echo $products_per_term; ?>">
+				<div class="wtb-showcase-products" style="--wtb-product-columns:<?php echo (int) $products_per_term; ?>">
 					<?php foreach ( $products as $product_post ) :
 						$product_link  = get_permalink( $product_post->ID );
 						$product_thumb = get_the_post_thumbnail_url( $product_post->ID, 'woocommerce_thumbnail' );

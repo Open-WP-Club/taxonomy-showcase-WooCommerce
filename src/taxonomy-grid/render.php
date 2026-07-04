@@ -31,6 +31,9 @@ $search_placeholder = $attributes['searchPlaceholder'] ?? '';
 $exclude_term_ids  = array_map( 'absint', $attributes['excludeTermIds'] ?? [] );
 
 if ( ! taxonomy_exists( $taxonomy ) ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		return '<!-- WTB_DEBUG: taxonomy_not_found=' . esc_html( $taxonomy ) . ' -->';
+	}
 	return '';
 }
 
@@ -62,6 +65,11 @@ $query_args = apply_filters( 'woo_taxonomy_blocks_grid_query_args', $query_args,
 $terms = get_terms( $query_args );
 
 if ( is_wp_error( $terms ) || empty( $terms ) ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		$debug_err   = is_wp_error( $terms ) ? $terms->get_error_message() : 'empty';
+		$debug_count = is_array( $terms ) ? count( $terms ) : gettype( $terms );
+		return '<!-- WTB_DEBUG: no_terms taxonomy=' . esc_html( $taxonomy ) . ' hide_empty=' . ( $hide_empty ? '1' : '0' ) . ' count=' . $debug_count . ' err=' . esc_html( $debug_err ) . ' -->';
+	}
 	return '';
 }
 
@@ -82,15 +90,14 @@ $classes = implode( ' ', array_filter( [
 	$show_alphabet   ? 'wtb-has-alphabet' : '',
 ] ) );
 
-$extra_parts = [];
-if ( $show_alphabet ) $extra_parts[] = 'data-alpha="1"';
-if ( $show_search )   $extra_parts[] = 'data-search="1"';
-$extra_attrs = implode( ' ', $extra_parts );
-
-$wrapper_attrs = get_block_wrapper_attributes( [
+$wrapper_extra = [
 	'class' => $classes,
 	'style' => $css_vars,
-] );
+];
+if ( $show_alphabet ) $wrapper_extra['data-alpha'] = '1';
+if ( $show_search )   $wrapper_extra['data-search'] = '1';
+
+$wrapper_attrs = get_block_wrapper_attributes( $wrapper_extra );
 
 // ── Card renderer (closure to avoid global function conflicts) ────────────────
 
@@ -142,9 +149,7 @@ $render_card = static function ( WP_Term $term, string $term_link, string $image
 // ── Render ────────────────────────────────────────────────────────────────────
 
 ob_start();
-echo '<div ' . $wrapper_attrs;
-if ( $extra_attrs ) echo ' ' . $extra_attrs;
-echo '>';
+echo '<div ' . $wrapper_attrs . '>';
 
 if ( $show_search ) {
 	$placeholder = $search_placeholder ?: __( 'Search…', 'woo-taxonomy-blocks' );

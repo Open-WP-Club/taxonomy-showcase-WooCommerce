@@ -11,28 +11,36 @@ class WTB_Term_Image {
 	 * 3. Featured image of the first product in the term
 	 */
 	public static function get_id( WP_Term $term ): int {
-		$id = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
-		if ( $id ) return $id;
+		static $cache = [];
 
-		$id = (int) get_term_meta( $term->term_id, 'wtb_image_id', true );
-		if ( $id ) return $id;
-
-		$products = get_posts( [
-			'post_type'      => 'product',
-			'posts_per_page' => 1,
-			'fields'         => 'ids',
-			'tax_query'      => [ [
-				'taxonomy' => $term->taxonomy,
-				'terms'    => $term->term_id,
-			] ],
-		] );
-
-		if ( $products ) {
-			$id = (int) get_post_thumbnail_id( $products[0] );
-			if ( $id ) return $id;
+		$key = $term->taxonomy . '_' . $term->term_id;
+		if ( array_key_exists( $key, $cache ) ) {
+			return $cache[ $key ];
 		}
 
-		return 0;
+		$id = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
+		if ( ! $id ) {
+			$id = (int) get_term_meta( $term->term_id, 'wtb_image_id', true );
+		}
+
+		if ( ! $id ) {
+			$products = get_posts( [
+				'post_type'      => 'product',
+				'posts_per_page' => 1,
+				'fields'         => 'ids',
+				'tax_query'      => [ [
+					'taxonomy' => $term->taxonomy,
+					'terms'    => $term->term_id,
+				] ],
+			] );
+
+			if ( $products ) {
+				$id = (int) get_post_thumbnail_id( $products[0] );
+			}
+		}
+
+		$cache[ $key ] = $id;
+		return $id;
 	}
 
 	public static function get_url( WP_Term $term, string $size = 'medium', int $placeholder_id = 0 ): string {
