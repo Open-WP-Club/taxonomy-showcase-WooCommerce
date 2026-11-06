@@ -1,6 +1,8 @@
 <?php
 /**
  * Plugin Name:       WooCommerce Taxonomy Blocks
+ * WC tested up to: 11.2.2
+ * Tested up to: 7.1.4
  * Description:       Gutenberg blocks for displaying WooCommerce taxonomy terms as Grid and Showcase layouts.
  * Version:           1.2.3
  * Author:            OpenWpClub
